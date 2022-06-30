@@ -19,21 +19,18 @@ import vista.Vista;
  * @author camila
  */
 public class Controlador {
+
     Login vista;
     private Usuario modelo;
-   
-    
-    public Controlador(Login v, Usuario m)
-    {
+
+    public Controlador(Login v, Usuario m) {
         this.vista = v;
-        this.modelo = m;        
+        this.modelo = m;
     }
-    
-    
-     public void inicializar() throws InstantiationException, IllegalAccessException, Exception
-    {
-        
-        this.vista.getjButton1().addActionListener( e-> {
+
+    public void inicializar() throws InstantiationException, IllegalAccessException, Exception {
+
+        this.vista.getjButton1().addActionListener(e -> {
             try {
                 login();
             } catch (Exception ex) {
@@ -41,32 +38,26 @@ public class Controlador {
             }
         });
         this.vista.setVisible(true);
-        
-        
-        
+
     }
-     
-     public void login() throws IllegalAccessException, Exception
-     {
-         String login = this.vista.getjTextField1().getText();
-         String pass = this.vista.getjTextField2().getText();
-         
-         this.modelo.setLogin(login);
-         this.modelo.setPassword(pass);
-         
-         if (this.modelo.logearse())
-         {
-             this.vista.imprimirExito();
-             Menu m = new Menu();    
-             m.setVisible(true);
-             
-         }
-         else
-         {
-             this.vista.imprimirFracaso();  
-             Menu m = new Menu(); 
-             m.setVisible(false);
-         }   
-     }
+
+    public void login() throws IllegalAccessException, Exception {
+        String login = this.vista.getjTextField1().getText();
+        String pass = this.vista.getjTextField2().getText();
+
+        this.modelo.setLogin(login);
+        this.modelo.setPassword(pass);
+
+        if (this.modelo.logearse()) {
+            this.vista.imprimirExito();
+            Menu m = new Menu();
+            m.setVisible(true);
+
+        } else {
+            this.vista.imprimirFracaso();
+            Menu m = new Menu();
+            m.setVisible(false);
+        }
+    }
 
 }
